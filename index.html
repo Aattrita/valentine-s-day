@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Special</title>
+    <link rel="stylesheet" href="style.css"></link>
+</head>
+<body>
+    <div class="main" id="main">
+        <video autoplay muted loop id="hearts">
+            <source src="assets/bgVideo/hearts.mp4" type="video/mp4">
+        </video>    
+    
+        <div class="content">
+            <div class="card" id="card">
+
+                <!--The animation part-->
+                <div class="animation" id="animation">
+                    <dotlottie-wc 
+                        class="teddy"
+                        id="first"
+                        src="https://lottie.host/9f442de9-f6a0-4b87-b06f-56722077335e/sNFCFHABgb.lottie" 
+                        autoplay 
+                        loop>
+                    </dotlottie-wc>
+                </div>
+
+                <!-- The question part-->
+                <h1 id="heading">Will you be my valentine? ❤️</h1>
+                <p id="wish"></p>
+
+                <!--The buttons part-->
+                <div class="buttons" id="buttons">
+                    <button id="yes" onclick="yes()">Yes 💕</button>
+                    <button id="no">No 😢</button>
+                </div>
+
+            </div>
+            <div id="music">
+                <img src="assets/musicImage/mute.png" id="song" style="width: 30px; height: 25px;" name ="mute" onclick="changeMusic()">
+            </div>
+           
+        </div>
+    </div>
+    <audio id="backgroundMusic" loop >
+        <source src = "assets/bgMusic/Until_I_Found_You.mp3" type="audio/mpeg">
+    </audio>
+   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
+   <script>
+
+    //Change image and play music
+    function changeMusic(){
+        let image = document.getElementById('song');
+        let music = document.getElementById('backgroundMusic');
+        if(image.name === 'mute'){
+            image.src ="assets/musicImage/volume.png";
+            image.name="unmute";
+            music.play();
+        }
+        else if(image.name === 'unmute'){
+            image.src="assets/musicImage/mute.png";
+            image.name= "mute";
+            music.pause();
+        }
+        else{
+            console.log("Error");
+        }
+        
+    }
+
+    function yes(){
+        const oldAnim = document.getElementById('first');
+        const parent = oldAnim.parentElement;
+
+        //Remove the old animation
+        oldAnim.remove();
+
+        //Create new Animation
+        const newAnim = document.createElement("dotlottie-wc");
+
+        //Set attributes with the new animation
+        newAnim.setAttribute("id" ,"afterYes");
+        newAnim.setAttribute("src","https://lottie.host/81e6a963-aa2e-4f58-a4eb-4bfcb53ac8d2/gEwmiXxpQj.lottie");
+        newAnim.setAttribute("autoplay","");
+        newAnim.setAttribute("loop","");
+
+        //Append with the parent div
+        parent.appendChild(newAnim);
+        
+        //Makes the button hidden after clicking yes
+        document.getElementById("buttons").style.display="none";
+        
+        //Change the the heading means the message
+         
+        const message = "<p style='color: #EFE9E3; font-family: cursive; font-size: 1.5rem; line-height: 1.6;'>I fell in love with you quietly, long before you even noticed. 💖 Every love song feels like it’s about us, and every flower reminds me of you. 🌸✨ You are my light, my color, my everything — and I promise to care for you always. ☀️💕<br>Happy Velentine's Day my love 💖</p>";
+
+        const wish = "Happy Valentine's Day my love";
+
+        document.getElementById('heading').innerHTML = message;
+        
+        
+        
+
+
+
+         //Change the video background 
+         let video = document.getElementById('hearts');
+         video.src ="assets/bgVideo/afterYes.mp4";
+
+         //Change the inner card div colour
+         document.getElementById('card').style.backgroundColor = "rgba(208, 39, 82,0.01)";
+
+         //Change the audio 
+        //  let audio = document.getElementById('song');
+        //  audio.setAttribute("src","assets/bgMusic/afterYesMusic.mp3");
+        //  audio.setAttribute("autoplay","");
+        //  audio.setAttribute("loop","");
+
+    }
+    //Take a counter variable 
+    let count=0;
+    
+
+    document.getElementById('no').addEventListener('click',function(){
+        
+        //An array for animation sources
+        let animList =["https://lottie.host/6fafeb4d-bcd8-4997-abe4-4246eef63868/cUFgtSBAFz.lottie","https://lottie.host/518483d1-aaf5-4ede-ab22-e5227c0259d6/ALesi2yvRW.lottie","https://lottie.host/3dc86b7b-725d-408b-9527-95e66f132873/ofEdC4VbYG.lottie","https://lottie.host/fa674e34-f734-4fd6-8b3e-99103315902f/1MLvZ95ujh.lottie"];
+        
+
+        //An array for list of messages
+        const list =["Are you sure 😔","My heart just did a tiny ouch… but it still likes you 🥺","Please,think again babe 😭","So… there’s no more “No” left 🫣<br>Looks like destiny has chosen for you. 😌✨"];
+
+        //Change the div colour
+        document.getElementById('card').style.backgroundColor = "rgba(208,39,82,0.00)";
+
+        //The width and height of the no button
+        let noButton = document.getElementById('no');
+        let noBWidth =noButton.offsetWidth;
+        let noBHeight = noButton.offsetHeight;
+
+        //The width and height of the yes button
+        let yesButton = document.getElementById("yes");
+        let yesBWidth = yesButton.offsetWidth;
+        let yesBHeight = yesButton.offsetHeight;
+
+        //the font weight of the yes font
+        let fontW = window.getComputedStyle(yesButton).fontWeight;
+        
+
+        //the font length
+        let size = parseInt(window.getComputedStyle(yesButton).fontSize);
+
+        
+
+        if(count<list.length-1){
+            document.getElementById("heading").innerHTML=list[count];
+            //Anime Change
+            const oldAnim = document.getElementById('first');
+            const parent = oldAnim.parentElement;
+
+            //Remove the old animation
+            oldAnim.remove();
+
+            //Create new Animation
+            const newAnimNo = document.createElement("dotlottie-wc");
+
+            //Set attributes with the new animation
+            newAnimNo.setAttribute("id" ,"first");
+            newAnimNo.setAttribute("src",animList[count]);
+            newAnimNo.setAttribute("autoplay","");
+            newAnimNo.setAttribute("loop","");
+            // newAnimNo.setAttribute("style","width:250px;height:250px");
+            if(count === 0){
+                newAnimNo.style.width = "180px";
+                newAnimNo.style.height = "180px";
+                //Change the video
+                let video = document.getElementById('hearts');
+                // video.id ="hearts";
+                 video.src ="assets/bgVideo/afterNo.mp4";
+
+        
+            } 
+            else {
+                newAnimNo.style.width = "250px";
+                newAnimNo.style.height = "250px";
+            }
+            
+
+
+            //Append with the parent div
+            parent.appendChild(newAnimNo);
+            count++;
+
+            //Change the no button height and width
+            noBHeight =noBHeight-10;
+            noBWidth = noBWidth-30;
+            noButton.style.width = noBWidth+"px";
+            noButton.style.height = noBHeight+"px";
+
+
+            //Change the yes button height and width
+            // yesBHeight = yesBHeight+0.01;
+            yesBWidth  = yesBWidth+20;
+            // yesButton.style.height = yesBHeight+"px";
+            yesButton.style.width = yesBWidth+"px";
+            
+
+            //Change the font weight
+            fontW =parseInt(fontW)+100;
+            yesButton.style.fontWeight=fontW; 
+
+            //Change the length of the font
+            yesButton.style.fontSize = (size + 5) + "px";
+        }
+        else{
+
+            fontW =parseInt(fontW)+150;
+            yesButton.style.fontWeight=fontW; 
+
+            yesButton.style.fontSize = (size + 10) + "px";
+
+            let last = list.length;
+            document.getElementById("heading").innerHTML=list[last-1];
+           noButton.style.display="none";
+
+           let lastAnim = animList.length;
+
+           const oldAnim = document.getElementById('first');
+        const parent = oldAnim.parentElement;
+
+        //Remove the old animation
+        oldAnim.remove();
+
+        //Create new Animation
+        const newAnimNo = document.createElement("dotlottie-wc");
+
+        //Set attributes with the new animation
+        newAnimNo.setAttribute("id" ,"first");
+        newAnimNo.setAttribute("src",animList[lastAnim-1]);
+        newAnimNo.setAttribute("style","width:250px;height:250px");
+        newAnimNo.setAttribute("autoplay","");
+        newAnimNo.setAttribute("loop","");
+
+        //Append with the parent div
+        parent.appendChild(newAnimNo);
+
+        }
+            
+        
+    });
+   </script>
+  
+</body>
+</html>
