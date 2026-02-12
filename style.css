@@ -37,19 +37,21 @@ html,body{
 
 }
 .card {
-    background-color:rgba(240, 204, 204, 0.21);
-    width : 1000px;
-    height : 400px;
-    /* justify-content: center;
-    align-items: center; */
+    background-color: rgba(240, 204, 204, 0.21);
+    width: 90%;              /* responsive width */
+    max-width: 1000px;       /* desktop limit */
+    min-height: 400px;       /* allow height to grow */
+    height: auto;            /* IMPORTANT */
+    padding: 20px;
 }
 
 #animation {
     position:relative;
-    width: 200px;  /* Adjust size as needed */
-    height: 200px; /* Adjust size as needed */
+    width: 40%;
+    max-width: 200px;
+    height: auto;
     top:20px;
-    margin: 0 auto; /* Centers it inside the card */
+    margin: 20px auto; /* Centers it inside the card */
 }
 
 .teddy {
@@ -63,6 +65,9 @@ html,body{
 
 #heading {
     align-content: center;
+     padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 
 }
 .buttons {
@@ -93,4 +98,20 @@ html,body{
     height : 25px;
     /* padding-left: 20%; */
 
+}
+@media (max-width: 600px) {
+    .card {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    #yes, #no {
+        width: 120px;
+        height: 45px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
 }
