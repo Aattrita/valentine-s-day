@@ -101,19 +101,54 @@ html,body{
     /* padding-left: 20%; */
 
 }
-@media (max-width: 600px) {
+#wish {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+/* 📱 Landscape Mode for Mobile */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+
+    .main {
+        min-height: 100vh;
+        overflow-y: auto;
+    }
+
     .card {
+        width: 90%;
         min-height: auto;
         padding: 15px;
     }
 
+    #animation {
+        width: 120px;
+        height: 120px;
+        top: 10px;
+    }
+
+    .teddy,
+    #afterYes {
+        width: 100px;
+        height: 100px;
+    }
+
+    #heading {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    #wish {
+        font-size: 14px;
+        padding: 10px;
+    }
+
     #yes, #no {
         width: 120px;
-        height: 45px;
+        height: 40px;
         font-size: 14px;
     }
 
-    h1 {
-        font-size: 20px;
-    }
 }
+
