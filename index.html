@@ -129,7 +129,7 @@
         
 
         //An array for list of messages
-        const list =["Are you sure 😔","My heart just did a tiny ouch… but it still likes you 🥺","Please,think again babe 😭","So… there’s no more “No” left 🫣<br>Looks like destiny has chosen for you. 😌✨"];
+        const list =["Excuse me?? Think again, hooman 😤","My heart just did a tiny ouch… but it still likes you 🥺","Please,think again babe 😭","So… there’s no more “No” left 🫣<br>Looks like destiny has chosen for you. 😌✨"];
 
         //Change the div colour
         document.getElementById('card').style.backgroundColor = "rgba(208,39,82,0.00)";
@@ -174,6 +174,7 @@
             if(count === 0){
                 // newAnimNo.style.width = "180px";
                 // newAnimNo.style.height = "180px";
+                newAnimNo.classList.add("anim-small");
                 //Change the video
                 let video = document.getElementById('hearts');
                 // video.id ="hearts";
@@ -184,6 +185,7 @@
             else {
                 // newAnimNo.style.width = "250px";
                 // newAnimNo.style.height = "250px";
+                 newAnimNo.classList.add("anim-large");
             }
             
 
